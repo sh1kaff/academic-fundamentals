@@ -1,0 +1,189 @@
+\documentclass[a4paper,12pt,oneside]{mybook}
+% \documentclass[12pt]{spieman}
+\usepackage{ebgaramond}
+\usepackage{graphicx}
+\usepackage[cmintegrals,cmbraces,ebgaramond]{newtxmath}
+\usepackage{lipsum}
+\usepackage{tabularx}
+
+% -------------------------------------------
+% [!!!] Раскомментировать при работе с mybook.cls
+% -------------------------------------------
+\doctitle{Lab 2.3}
+\docsubtitle{LaTeX}
+\dockeywords{Your keywords}
+
+\copyrightpage%
+{Institute of Informatics and Cybernetics}% Your Faculty
+{Samara University}% Your University
+{Igor Gofman}% Your Publisher
+{01A75, 00B50}% AMS
+{Samara}% Your City
+\author{Sergey Sheff \\ \and Semen Strebelev}
+\footext{}
+
+% Don't comment the command below if it's not of much inconvenience, please!
+\greetings
+
+% Last things
+\input{preamble}
+
+% Dummy text
+\usepackage{lipsum}
+
+\begin{document}
+% Interlineate, it can be changed.
+\setlength{\baselineskip}{.70cm}
+\frontmatter
+
+\maketitle
+\clearpage
+
+% Copyright page
+\pagestyle{\auxsettings}
+\input{copyright-page}
+
+\tableofcontents
+\etocsettocstyle{}{} % from now on only local tocs
+\clearpage
+
+\pagestyle{\defaultsettings}
+\mainmatter
+\part{Theory}{}
+\chapter{Discovery of a Security Flaw in SAML 2.0 Web Browser SSO Profile Protocol}
+% -------------------------------------------
+
+% -------------------------------------------
+% [!!!] Раскомментировать при работе с spieman.cls
+% -------------------------------------------
+% \setlength{\headheight}{14.0pt}
+% \addtolength{\topmargin}{-1.0pt}
+% \setlength{\footskip}{12.6pt}
+% \begin{document}
+% \tableofcontents
+% \newpage
+% \part{Discovery of a Security Flaw in SAML 2.0 Web Browser SSO Profile Protocol}
+% -------------------------------------------
+
+\section{Abstract}
+Single-Sign-On (SSO) protocols enable companies to establish a federated environment in which clients sign in the system once and yet are able to access services offered by different companies. The scheme of SSO operation is shown in the figure \ref{sso_img}. The OASIS Security Assertion Markup Language (SAML) 2.0 Web Browser SSO Profile is the emerging standard in this context. In this paper we provide formal models of the protocol corresponding to one of the most applied use case scenario (the SP-Initiated SSO with Redirect/POST Bindings) and of a variant of the protocol implemented by Google and currently in use by Google’s customers (the SAML-based SSO for Google Applications). We have mechanically analysed these formal models with SATMC, a state-of-the-art model checker for security protocols. SATMC has revealed a severe security flaw in the protocol used by Google that allows a dishonest service provider to impersonate a user at another service provider. We have also reproduced this attack in an actual deployment of the SAML-based SSO for Google Applications.
+
+\section{Types of SSO}
+SSO types are categorized based on where and how they are deployed, the type of credentials they use, and whether they are single sign-on protocols:
+\begin{enumerate}
+    \item Intranett or Enterprise SSO (ESSO);
+    \item Extranet or Multi-domain SSO;
+    \item Internet or Web SSO;
+    \item Simple/complex SSO architecture;
+    \item Complex SSO with a single(multiple) set(s) of credentials;
+    \item Kerberos authentication Protocol;
+    \item SAML;
+    \item OpenID.
+\end{enumerate}
+
+\section{Confidential channelsand laws of identity}
+We will now revisit the Cameron’s law of identity, which is used in the
+later part of this paper:
+\begin{itemize}
+    \item User Control and Consent;
+    \item Minimal Disclosure for a Constrained Use;
+    \item Justifiable Parties;
+    \item Directed Identity;
+    \item Pluralism of Operators and Technologies;
+    \item Human Integration;
+    \item Consistent Experience Across Contexts.
+\end{itemize}
+
+To illustrate the usage of the above constraints let us consider the SAML SSO and its security recommendations in matter of communication channels. Assumption (A1) requires that the message exchanges between C and SP are carried over unilateral SSL/TLS channels. As sumption (A2) imposes that the message from C to IdP is sent over a confidential channel, while the message from IdP to C is sent over a confidential and authentic channel. For each session s, this amounts to including the following constraints in C. Also take a look at the figure \ref{saml_img}
+
+\section{SSO protocols: overview and comparison}
+Let's consider several of the most common SSO protocols and compare their main characteristics. The table Table \ref{sso_table} below summarizes some of the most popular SSO protocols and their brief descriptions.
+
+When selecting an SSO protocol, consider your organization's requirements for security, compatibility with existing systems, and usability for users.
+
+\section{Confidential channels}
+A channel provides confidentiality if its output is exclusively accessible to given receiver. In our model this amounts to requiring that in every state if a fact, then has exclusive access to the channel. Thus, the condition that channel is confidential to principal can be formalised by the following formulas:
+
+\begin{flalign*}
+    & F(x) = \int_{-\infty}^{\infty} e^{-\frac{x^2}{2}} \cdot \left(\sum_{n=0}^{\infty} \frac{(2n)!}{n! \cdot 2^n} \cdot \sqrt{2\pi} \cdot x^n\right) \, dx & \\
+    & \text{where} &
+\end{flalign*}
+\[
+\begin{aligned}
+    & F(x) \text{ --- cumulative distribution function of a normal distribution,} \\
+    & e \text{ --- base of the natural logarithm,} \\
+    & x \text{ --- variable,} \\
+    & n \text{ --- index of the summation.}
+\end{aligned}
+\]
+
+\begin{flalign*}
+    & \text{AES}(M, K) = \left(\sum_{i=1}^{10} S(\text{ShiftRows}(\text{SubBytes}(M \oplus K))) \cdot R_i \right) \oplus K & \\
+    & \text{where} &
+\end{flalign*}
+\[
+\begin{aligned}
+    & \text{AES}(M, K) \text{ --- result of AES encryption of message } M \text{ with key } K, \\
+    & S(\cdot) \text{ --- substitution operation,} \\
+    & \text{ShiftRows}(\cdot) \text{ --- row shifting operation,} \\
+    & \text{SubBytes}(\cdot) \text{ --- byte substitution operation,} \\
+    & R_i \text{ --- round key for round } i, \\
+    & \oplus \text{ --- bitwise exclusive OR operation.}
+\end{aligned}
+\]
+
+Formulas (\ref{1}) and (\ref{2})
+% Но рефки почему-то не работают(именно на формулы в mybook) и формулы не нумеруются!!! :(
+can be used to formalize the security and reliability requirements of an SSO system. They can be used to verify that the SSO system complies with certain standards and requirements, as well as to identify possible vulnerabilities and errors in the authentication and authorization process.
+
+\begin{equation}
+    E(m, k) = (m \cdot k) \mod n
+    \label{1}
+\end{equation}
+
+\begin{equation}
+    \text{SHA-256}(M) = H_0 \oplus H_1 \oplus H_2 \oplus H_3 \oplus H_4 \oplus H_5 \oplus H_6 \oplus H_7
+    \label{2}
+\end{equation}
+
+\clearpage
+
+% Appendixes
+% \appendix
+\section{Appendix}
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1\linewidth]{sso_scheme.png}
+    \caption{SSO execution scenario}
+    \label{sso_img}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=1\linewidth]{saml.png}
+    \caption{Attack on the SAML-based SSO}
+    \label{saml_img}
+\end{figure}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{|c|X|X|}
+        \hline  
+        Protocol & Description & Use cases \\
+        \hline
+        SAML 2.0 & Standard SSO protocol that uses XML for data exchange between service providers and identity providers. & Enterprise SSO, cloud-based applications, web-based applications, and mobile applications.\\
+        \hline
+        OAuth 2.0 & Authorization protocol that allows users to grant access to their data without sharing their password. & Social media logins, third-party app access, and API authentication. \\
+        \hline
+        OpenID Connect & SSO protocol based on OAuth 2.0 that adds user authentication capabilities. & Web-based applications, mobile applications, and enterprise SSO. \\
+        \hline
+        WS-Federation & SSO protocol used in the Windows environment that allows users to access resources in different domains. & Enterprise SSO, web-based applications, and legacy applications. \\
+        \hline
+        CAS & SSO protocol used in the Java environment that allows users to access resources on different servers. & Web-based applications, enterprise SSO, and cloud-based applications. \\
+        \hline
+    \end{tabularx}
+    \caption{Comparison of Common Single Sign-On (SSO) Protocols}
+    \label{sso_table}
+\end{table}
+
+\end{document}
